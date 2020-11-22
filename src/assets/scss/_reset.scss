@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+ul, li, a, h1, h2, h3, h4, h5, h6, div, nav, section, body, input, label, textarea, button, p {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+body {
+  height: auto !important;
+}
+
+button {
+  outline: none;
+}
+
+em {
+  font-style: normal;
+}

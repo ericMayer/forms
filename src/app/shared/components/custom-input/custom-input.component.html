@@ -1,0 +1,5 @@
+<label class="label" for="custom-input">{{ getLabel() }}</label>
+
+<input class="input" name="custom-input" [type]="type" [placeholder]="placeholder" [mask]="mask" [maxlength]="maxlength" [required]="isRequired" [(ngModel)]="value" [class.valid]="getBorderSuccess()" [class.invalid]="invalid" (focusout)="setInvalid()">
+
+<mat-error> {{ error }} </mat-error>

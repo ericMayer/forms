@@ -1,0 +1,19 @@
+<button [class.close-button-error]="data?.error" class="close-button" (click)="close()">x</button>
+
+
+<ng-container *ngIf="data?.error; else showSucessMessage">
+  <main class="message">
+    <h1>{{ data?.title }} </h1>
+    <p> {{ data?.message }} </p>
+  </main>
+
+</ng-container>
+
+<ng-template #showSucessMessage>
+  <main class="message">
+    <h1> {{ data?.title }} </h1>
+    <p> {{ data?.message }} </p>
+  </main>
+</ng-template>
+
+<button [class.button-error]="data?.error" class="button" (click)="close()"> {{ getTextButton() }} </button>

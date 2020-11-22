@@ -1,0 +1,58 @@
+::ng-deep {
+  .mat-dialog-container {
+    background: #F2F2F2;
+    color: #222222;
+  }
+
+  .container-modal {
+    position: relative !important;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  padding: 0 60px;  
+  h1 {
+    font-size: 1.5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-self: center;
+    font-weight: 700;
+  }
+
+  p {
+    text-align: left;
+    font-size: 1.2rem;
+    padding-bottom: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 20px;
+
+    h1 {
+      align-self: flex-start;
+    }
+  }
+}
+
+.button {
+  display: block;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  height: 40px;
+  width: 150px;
+  border-radius: 8px;
+  border: none;
+  background: #FCC60A;
+  cursor: pointer;
+}
+
+.button-error {
+  background: #E06B62;
+  width: 170px;
+}
+
+.close-button-error {
+  background: #E06B62;
+}

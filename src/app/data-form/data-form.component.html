@@ -1,0 +1,93 @@
+<form class="container" [formGroup]="form">
+
+  <mat-icon (click)="back()" class="icon">
+    arrow_back
+  </mat-icon>
+
+  <label class="label" for="nome">*Nome</label>
+  <input class="input" name="nome" type="text" required placeholder="Digite seu nome" formControlName="nome"   (ngModelChange)="setError('nome')" (blur)="setError('nome')">
+  <mat-error> {{ getError('nome') }} </mat-error>
+  
+  <div class="margin-bottom"></div>
+
+
+  <label class="label" for="cpf">*CPF</label>
+  <input class="input" name="cpf" type="text" required placeholder="Digite seu CPF" formControlName="cpf" [mask]="'000.000.000-00'" formControlName="cpf" [class.invalid]="getInvalid('cpf')" [class.valid]="form.get('cpf').valid" (ngModelChange)="setError('cpf')" (blur)="setError('cpf')">
+  <mat-error>{{ getError('cpf') }}</mat-error>
+
+  <div class="margin-bottom"></div>
+
+  <label class="label" for="email">*E-mail</label>
+  <input class="input" name="email" type="text" required placeholder="Digite seu e-mail" email formControlName="email" formControlName="email" [class.invalid]="getInvalid('email')" [class.valid]="form.get('email').valid" (ngModelChange)="setError('email')" (blur)="setError('email')">
+  <mat-error> {{ getError('email') }}</mat-error>
+
+  <div class="margin-bottom"></div>
+
+  <label class="label" for="confirmarEmail">*Confirmar E-mail</label>
+  <input class="input" name="confirmarEmail" type="text" required placeholder="Confirme seu e-mail" email formControlName="confirmarEmail" [class.invalid]="invalidationCustom('confirmarEmail', 'equalsTo')" [class.valid]="validationCustom('confirmarEmail', 'equalsTo')">
+  <mat-error> {{ getErrorCustomEqualsTo('confirmarEmail', 'equalsTo', 'email') }}</mat-error>
+
+  <div class="margin-bottom"></div>
+
+
+  <div class="endereco" formGroupName="endereco">
+
+    <div class="dados-cep">
+      <app-custom-input class="cep" [label]="'CEP'" [placeholder]="'CEP'" [isRequired]="'true'" [mask]="'00.000-000'" [maxlength]="'10'" 
+      [length]="'8'" formControlName="cep" (change)="getEndereco()"></app-custom-input>
+
+      <app-custom-input class="numero" [label]="'Número'" [isRequired]="'true'" [mask]="'00000'" formControlName="numero"></app-custom-input>
+
+      <app-custom-input [label]="'Complemento'" formControlName="complemento"></app-custom-input>
+    </div>
+
+    <div class="margin-bottom"></div>
+
+    <app-custom-input [label]="'Rua'" [isRequired]="'true'" formControlName="logradouro"></app-custom-input>
+
+    <div class="margin-bottom"></div>
+
+    <app-custom-input [label]="'Bairro'" [isRequired]="'true'" 
+      formControlName="bairro">
+    </app-custom-input>
+
+    <div class="margin-bottom"></div>
+      
+    <div class="dados-cidade">
+
+      <div>
+        <label>*Estado</label>
+        <ng-select class="estado" placeholder="Estado" [class.invalid-select]="getInvalid('endereco.uf')" [class.valid-select]="form.get('endereco.uf').valid" (change)="setError('endereco.uf')" formControlName="uf" [clearable]="false" [items]="estados" bindLabel="sigla" (change)="getCidades($event)">    
+        </ng-select>
+
+        <mat-error class="error-mobile"> {{ getError('estado') }}</mat-error>
+      </div>
+
+      <div>
+        <label>*Cidade</label>
+        <ng-select class="cidade" [class.invalid-select]="getInvalid('endereco.cidade')" [class.valid-select]="form.get('endereco.cidade').valid" (change)="setError('endereco.cidade')" formControlName="cidade" placeholder="Cidade" [clearable]="false" [items]="cidades" bindLabel="nome">
+        </ng-select>
+
+        <mat-error class="error-mobile"> {{ getError('cidade') }}</mat-error>
+      </div>
+    </div>
+
+    <div class="erros-dados-cidade">
+      <mat-error> {{ getError('estado') }}</mat-error>
+
+      <mat-error> {{ getError('cidade') }}</mat-error>
+    </div>
+  </div>
+
+  <div class="termos" formArrayName="termos" *ngFor="let termo of this.form.get('termos')['controls']; let i = index">
+    <label for="termo">
+      <input type="checkbox" name="termo" [formControlName]="i" (ngModelChange)="setError('termos')"> Concorda com os <em (click)="openModalTermos(i)">{{ listaTermos[i] }} </em>
+    </label>
+  </div>
+
+  <div class="margin-bottom"></div>
+
+  <div class="buttons-action">
+    <button class="button-confirm" (click)="cadastrarUsuario()" [disabled]="!form.valid">Cadastrar</button>
+  </div>
+</form>

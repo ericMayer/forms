@@ -1,0 +1,50 @@
+<div class="form-default">
+  <app-custom-input [label]="'Nome'" [placeholder]="'Digite seu nome'" [(ngModel)]="usuario.nome" [isRequired]="'true'" ngDefaultControl></app-custom-input>
+  
+  <app-custom-input class="cpf" [label]="'CPF'" [mask]="'000.000.000-00'" [placeholder]="'Digite seu CPF'" [isRequired]="'true'" [(ngModel)]="usuario.cpf" [maxlength]="'14'" [length]="'11'" ngDefaultControl></app-custom-input>
+
+  <app-custom-input [label]="'E-mail'" [type]="'email'" [placeholder]="'Digite seu e-mail'" [isRequired]="'true'" [(ngModel)]="usuario.email" ngDefaultControl></app-custom-input>
+
+  <div class="dados-cep">
+    <app-custom-input class="cep" [label]="'CEP'" [placeholder]="'CEP'" [isRequired]="'true'" [mask]="'00.000-000'" [maxlength]="'10'" 
+    [length]="'8'" [(ngModel)]="usuario.endereco.cep" (change)="getEndereco()" ngDefaultControl></app-custom-input>
+
+    <app-custom-input class="numero" [label]="'Número'" [isRequired]="'true'" [mask]="'00000'" [(ngModel)]="usuario.endereco.numero" ngDefaultControl></app-custom-input>
+
+    <app-custom-input [label]="'Complemento'" [(ngModel)]="usuario.endereco.complemento" ngDefaultControl></app-custom-input>
+
+  </div>
+
+  <app-custom-input [label]="'Rua'" [isRequired]="'true'" [(ngModel)]="usuario.endereco.logradouro" ngDefaultControl></app-custom-input>
+
+  <app-custom-input [label]="'Bairro'" [isRequired]="'true'" 
+    [(ngModel)]="usuario.endereco.bairro" ngDefaultControl>
+  </app-custom-input>
+    
+  <div class="dados-cidade">
+    <ng-select class="estado" placeholder="Estado" [items]="estados" bindLabel="sigla" [(ngModel)]="uf" [searchable]="false" [class.valid-select]="uf" [class.invalid-select]="checkError('estado')" (change)="setError('estado', uf)">    
+    </ng-select>
+
+    <mat-error class="error-mobile"> {{ checkError('estado') }}</mat-error>
+
+    
+    <ng-select class="cidade" placeholder="Cidade" [items]="cidades"
+    [(ngModel)]="cidade" bindLabel="nome" [searchable]="false" [class.valid-select]="cidade" [class.invalid-select]="checkError('cidade')" (change)="setError('cidade', cidade)">
+    </ng-select>
+
+    <mat-error class="error-mobile"> {{ checkError('cidade') }}</mat-error>
+
+  </div>
+
+  <div class="erros-dados-cidade">
+    <mat-error> {{ checkError('estado') }}</mat-error>
+
+    <mat-error> {{ checkError('cidade') }}</mat-error>
+  </div>
+  
+  <div class="buttons-action">
+    <button class="button-cancel" (click)="cancel()">Cancelar</button>
+    <button class="button-confirm" [disabled]="formValid()" (click)="postUsuario()">Cadastrar</button>
+  </div>
+ 
+</div>

@@ -1,0 +1,21 @@
+.close-button {
+  background: #FCC60A;
+  top: -24px;
+  right: -24px;
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border: none;
+}
+
+.invalid {
+  border: 2px solid #FF4E65 !important;
+}
+
+.valid {
+  border: 2px solid #374CFF !important;
+}
