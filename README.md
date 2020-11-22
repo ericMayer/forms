@@ -1,27 +1,22 @@
 # Forms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+Projeto desenvolvido com Angula 10 de validação de formulário apenas no Front-end com template drive e reactive forms, projeto inspirado no módulo de forms do curso de Angular https://loiane.training/curso/angular.
 
-## Development server
+O projeto foi separado em dois principais módulo um para Template Driven e outro para Forms Reactive, foi usado o Lazy loading para carregamento dos módulos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Foi utilizado alguns componentes do Material Design e SCSS.
 
-## Code scaffolding
+# Libs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Foram usadas as seguintes libs no projeto:
 
-## Build
+ngx-mask: https://www.npmjs.com/package/ngx-mask
+ng-select: https://www.npmjs.com/package/@ng-select/ng-select
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# APIs
 
-## Running unit tests
+Foram utilizadas duas APIs no projeto uma do Via CEP para verificação do endereço do CEP e a de localidades do IBGE para verificação da lista de Estados e Cidades por Estado.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+https://viacep.com.br/
+https://servicodados.ibge.gov.br/api/docs/localidades
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
